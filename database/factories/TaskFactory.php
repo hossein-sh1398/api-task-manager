@@ -18,7 +18,7 @@ class TaskFactory extends Factory
     {
         return [
             'title' => fake()->sentence(),
-            'description' => fake()->paragraph(2),
+            'description' => fake()->paragraph(),
             'start_date' => now(),
             'end_date' => now()->addDay(1),
         ];

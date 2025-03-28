@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Task;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,12 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(5)->create();
+        User::query()->delete();
+        Task::query()->delete();
 
-        // User::factory()->create([
-        //     'name' => 'Hossein',
-        //     'email' => 'hossein@gmail.com.com',
-        //     'password' => bcrypt('123456789'),
-        // ]);
+        User::factory()->has(Task::factory()->count(50), 'tasks')->create([
+            'name' => 'Hossein',
+            'email' => 'hossein@gmail.com.com',
+            'password' => bcrypt('Aa$123123123'),
+        ]);
     }
 }
