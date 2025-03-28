@@ -18,12 +18,12 @@ class LoginTest extends TestCase
         $user = User::factory()->create([
             'email' => 'hosseinshirinegad98@gmail.com',
             'name' => 'Hossein',
-            'password' => '123123123',
+            'password' => 'A_a123123123',
         ]);
 
         $response = $this->postJson('api/v1/login', [
             'email' => $user->email,
-            'password' => '123123123',
+            'password' => 'A_a123123123',
         ]);
 
         $response->assertStatus(200)
@@ -39,12 +39,12 @@ class LoginTest extends TestCase
         $user = User::factory()->create([
             'email' => 'hosseinshirinegad98@gmail.com',
             'name' => 'Hossein',
-            'password' => '123123123',
+            'password' => 'A_a123123123',
         ]);
 
         $response = $this->postJson('api/v1/login', [
             'email' => $user->email,
-            'password' => '456456456',
+            'password' => 'A_a456456456',
         ]);
 
         $response->assertStatus(401)

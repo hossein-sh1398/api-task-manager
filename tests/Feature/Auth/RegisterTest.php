@@ -16,8 +16,8 @@ class RegisterTest extends TestCase
         $response = $this->postJson('/api/v1/register', [
             'name' => '',
             'email' => '',
-            'password' => '123123123',
-            'password_confirmation' => '123123123',
+            'password' => 'A_a123123123',
+            'password_confirmation' => 'A_a123123123',
         ]);
 
         $response->assertStatus(422)
@@ -33,8 +33,8 @@ class RegisterTest extends TestCase
         $response = $this->postJson('/api/v1/register', [
             'name' => 'ali',
             'email' => 'ali@gmail.com',
-            'password' => '123123123',
-            'password_confirmation' => '12312312',
+            'password' => 'A_a123123123',
+            'password_confirmation' => 'A_a12312312',
         ]);
 
         $response->assertStatus(422)
@@ -47,13 +47,13 @@ class RegisterTest extends TestCase
         User::factory()->create([
             'name' => 'ali',
             'email' => 'ali@gmail.com',
-            'password' => '123456456'
+            'password' => 'A_a123123123'
         ]);
         $response = $this->postJson('api/v1/register', [
             'name' => 'ali',
             'email' => 'ali@gmail.com',
-            'password' => '123456456',
-            'password_confirmation' => '123456456',
+            'password' => 'A_a123123123',
+            'password_confirmation' => 'A_a123123123',
         ]);
 
         $response->assertStatus(422)
@@ -64,10 +64,10 @@ class RegisterTest extends TestCase
     public function test_user_can_register_successfully()
     {
         $response = $this->postJson('api/v1/register', [
-            'name' => 'hasan',
-            'email' => 'hasan@gmail.com',
-            'password' => '123456456',
-            'password_confirmation' => '123456456',
+            'name' => 'mohammad',
+            'email' => 'mohammad@gmail.com',
+            'password' => 'A_a123123123',
+            'password_confirmation' => 'A_a123123123',
         ]);
 
         $response->assertStatus(201)->assertJson([
@@ -80,8 +80,8 @@ class RegisterTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('users', [
-            'name' => 'hasan',
-            'email' => 'hasan@gmail.com',
+            'name' => 'mohammad',
+            'email' => 'mohammad@gmail.com',
         ]);
     }
 }
