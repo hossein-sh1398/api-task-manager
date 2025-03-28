@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\PasswordRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest
@@ -24,7 +25,7 @@ class RegisterRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:255',
             'email' => 'required|email|unique:users,email|min:10|max:255',
-            'password' => 'required|min:8|max:50|confirmed',
+            'password' => ['required', 'min:8', 'max:50', new PasswordRule, 'confirmed'],
         ];
     }
 }
