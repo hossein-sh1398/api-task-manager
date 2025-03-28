@@ -43,7 +43,9 @@ class TaskController extends Controller
                 'to' => $tasks->lastItem(),
                 'next_page_url' => $tasks->nextPageUrl(),
                 'prev_page_url' => $tasks->previousPageUrl(),
-                'links' => $tasks->toArray()['links']
+                'links' => $tasks->toArray()['links'],
+                'has_pages' => $tasks->hasPages(), //این متد بررسی می‌کند که آیا پاجینیشن شامل چندین صفحه است یا خیر
+                'has_more_pages' => $tasks->hasMorePages(), //آیا صفحات بیشتری بعد از صفحه جاری وجود دارد یا خیر
             ],
         ]);
     }
